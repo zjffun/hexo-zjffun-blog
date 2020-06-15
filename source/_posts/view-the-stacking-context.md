@@ -1,6 +1,7 @@
 ---
 title: 用 3D 方式查看层叠上下文（CSS `z-index` 属性）
 date: 2020-05-30 22:13:43
+updated: 2020-06-15 19:32:00
 tags:
 ---
 
@@ -46,7 +47,22 @@ tags:
 
 参见：[z index - Is there a way to see the stacking context, in IE/Firefox/Chrome/etc.? - Stack Overflow](https://stackoverflow.com/questions/6800511/is-there-a-way-to-see-the-stacking-context-in-ie-firefox-chrome-etc)
 
-## 其他想法
+# 处理层叠上下文的技巧
+
+使用 Sass 数组管理层叠上下文的 `z-index` 属性，数组元素的先后表示层级高低。例如：
+
+```scss
+// project-covers 在最下层，navigation 在最上层
+$elements: project-covers, sorting-bar, modals, navigation;
+
+.project-cover {
+  z-index: index($elements, project-covers);
+}
+```
+
+参见：[Sassy Z-Index Management For Complex Layouts — Smashing Magazine](https://www.smashingmagazine.com/2014/06/sassy-z-index-management-for-complex-layouts/)
+
+# 其他想法
 
 感觉用 CSS 3D transform 能搞点事情。
 
