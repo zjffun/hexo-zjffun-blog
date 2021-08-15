@@ -170,7 +170,7 @@ module.exports = exports = clearDNSCache;
 
 ### [Flush DNS & close sockets - Chrome Web Store](https://chrome.google.com/webstore/detail/flush-dns-close-sockets/mlmlfmdmhdplgecgmiihhfjodokajeel)
 
-没有找到源码，应该是使用拓展程序提供的 API 在标签页上执行 JS `chrome.benchmarking.closeConnections();` 等方法。和上面一样需要添加启动参数。
+使用拓展程序提供的 API 在标签页上执行 JS `chrome.benchmarking.closeConnections();` 等方法。和上面一样需要添加启动参数。
 
 ### [boreas320/chrome_hosts_flush_util: applescript tools suite for web developer](https://github.com/boreas320/chrome_hosts_flush_util)
 
