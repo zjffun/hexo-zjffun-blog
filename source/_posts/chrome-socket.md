@@ -133,7 +133,13 @@ int g_max_sockets_per_group[] = {
 
 ### [CloverNet/chrome-dns-clear: chrome dns cache clear](https://github.com/CloverNet/chrome-dns-clear)
 
-这是一个 CLI 工具，代码非常少，使用 [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) 让 Chrome 执行三个方法。这个工具需要 Chrome 启动时要添加三个启动参数。
+这是一个 CLI 工具，代码非常少，原理是使用 [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) 让 Chrome 执行三个方法：
+
+- `chrome.benchmarking.clearHostResolverCache()`
+- `chrome.benchmarking.clearCache();`
+- `chrome.benchmarking.closeConnections();`
+
+这个工具需要 Chrome 启动时要添加三个启动参数：
 
 - `--enable-benchmarking` 和 `--enable-net-benchmarking` 用来让 Chrome 加上要执行的三个方法。
 - `--remote-debugging-port=9222` 用来启动远程调试。
@@ -186,3 +192,9 @@ module.exports = exports = clearDNSCache;
 4. 关闭第一步打开的标签页。
 
 因为拓展程序默认禁止在 `chrome:` 开头的 URL 上运行脚本。所以需要访问 `chrome://flags/#extensions-on-chrome-urls` 并设置为 `Enabled` 才能自动执行点击操作。
+
+## 总结与思考
+
+缓存和网络是前端世界里两个永恒的话题，很多复杂的技术综合起来才使得我们可以享受各种实时便利的服务。套接字只是这其中的冰山一角，我这篇文章也只是套接字的冰山一角。希望可以帮助后人解决一个开发中的实际问题————关闭套接字。同时也为 [Close Sockets](https://chrome.google.com/webstore/detail/close-sockets/jmdakhnnimjejdbaahglbcpnlidckjff) Chrome 拓展程序打个广告，它应该是现在市面上最好用的工具。
+
+就在写这篇文章时想到了一个问题：在使用无痕浏览模式时也会出现套接字缓存，之前做过测试在建立的每个 TCP 链接上保存信息是可以实现的。那么理论上在无痕模式我看了很多网站里面有很多给 gugulu 广告公司发送了请求，gugulu 就可以通过套接字将这些信息关联。如果我这期间登录了 gugulu 的网站，或者其中某个网站将我的信息告诉 gugulu，那么我的所有浏览信息还是都泄露给 gugulu 了。只是临时想到的还没有仔细调查研究，欢迎大家评论区讨论。
