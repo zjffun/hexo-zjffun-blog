@@ -18,6 +18,8 @@ Unzip:
 7z x test.zip -otest-dir
 ```
 
+# Image
+
 # ImageMagick
 
 Batch convert `jpg` to `webp`:
@@ -25,3 +27,7 @@ Batch convert `jpg` to `webp`:
 ```bash
 magick mogrify -format webp *.jpg
 ```
+
+# [TinyPNG](https://tinypng.com/)
+
+Compress WebP, PNG and JPEG images intelligently
