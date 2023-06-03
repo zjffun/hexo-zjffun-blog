@@ -1,6 +1,6 @@
 ---
 title: Awesome JavaScript
-date:
+date: 2023-6-3
 tags:
 ---
 
