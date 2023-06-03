@@ -17,3 +17,11 @@ Unzip:
 ```bash
 7z x test.zip -otest-dir
 ```
+
+# ImageMagick
+
+Batch convert `jpg` to `webp`:
+
+```bash
+magick mogrify -format webp *.jpg
+```
